@@ -49,6 +49,14 @@ public class UserEntity extends AbstractEntity implements CustomerModel {
     @Column(name = "authenticated_at")
     private LocalDateTime authenticatedAt;
 
+    /** Shared storage prefix users/{userId}/avatar/{hash}, without a size or file extension. */
+    @Column(name = "avatar_key")
+    private String avatarKey;
+
+    /** Time of the last avatar change, including removal. */
+    @Column(name = "avatar_updated_at")
+    private LocalDateTime avatarUpdatedAt;
+
     @Column(name = "first_name")
     private String firstName;
 
@@ -111,6 +119,22 @@ public class UserEntity extends AbstractEntity implements CustomerModel {
 
     public void setAuthenticatedAt(final LocalDateTime authenticatedAt) {
         this.authenticatedAt = authenticatedAt;
+    }
+
+    public String getAvatarKey() {
+        return avatarKey;
+    }
+
+    public void setAvatarKey(final String avatarKey) {
+        this.avatarKey = avatarKey;
+    }
+
+    public LocalDateTime getAvatarUpdatedAt() {
+        return avatarUpdatedAt;
+    }
+
+    public void setAvatarUpdatedAt(final LocalDateTime avatarUpdatedAt) {
+        this.avatarUpdatedAt = avatarUpdatedAt;
     }
 
     @Override
